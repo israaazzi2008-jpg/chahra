@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>khtari NICHAN</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+overflow:hidden;
+background:radial-gradient(circle at top,#1a1a1a,#000);
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial;
+}
+
+.title{
+position:absolute;
+top:20px;
+width:100%;
+text-align:center;
+color:white;
+font-size:2rem;
+}
+
+.container{
+display:flex;
+gap:40px;
+}
+
+.card{
+text-align:center;
+cursor:pointer;
+transition:.3s;
+}
+
+.card img{
+width:160px;
+height:160px;
+object-fit:cover;
+border-radius:20px;
+}
+
+.label{
+color:white;
+margin-top:10px;
+}
+
+.fade{
+position:fixed;
+inset:0;
+background:black;
+opacity:0;
+pointer-events:none;
+transition:.6s;
+}
+
+.fade.active{opacity:1}
+
+/* ex escape */
+#exCard{
+position:relative;
+}
+
+.sparkle{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+from{transform:translateY(-10vh);opacity:1;}
+to{transform:translateY(110vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">khtari NICHAN</div>
+
+<div class="container">
+
+<div class="card" onclick="go('micheal_quiz.html',this)">
+<img src="micheal.webp">
+<div class="label">massimo a77</div>
+</div>
+
+<div class="card" id="exCard" onclick="go('ex_quiz.html',this)">
+<img src="ex.jpg">
+<div class="label">khalil w9</div>
+</div>
+
+</div>
+
+<div class="fade" id="fade"></div>
+
+<script>
+
+function go(page,el){
+el.style.transform="scale(1.1)";
+document.getElementById("fade").classList.add("active");
+setTimeout(()=>window.location.href=page,700);
+}
+
+/* ex runs away */
+const ex=document.getElementById("exCard");
+let t=0;
+
+function move(){
+t++;
+if(t<10){
+let x=(Math.random()-0.5)*150;
+let y=(Math.random()-0.5)*120;
+ex.style.transform=`translate(${x}px,${y}px)`;
+}
+}
+
+ex.addEventListener("mouseenter",move);
+ex.addEventListener("touchstart",move);
+
+/* sparkles */
+setInterval(()=>{
+const s=document.createElement("div");
+s.className="sparkle";
+s.style.left=Math.random()*window.innerWidth+"px";
+s.style.animationDuration=(2+Math.random()*3)+"s";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),5000);
+},80);
+
+</script>
+
+</body>
+</html>
