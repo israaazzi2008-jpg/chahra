@@ -20,14 +20,14 @@ from{opacity:0;transform:scale(1.05);}
 to{opacity:1;transform:scale(1);}
 }
 
-/* BACKGROUND FIXED */
+/* BACKGROUND (3 REPEATS ONLY) */
 .bg{
 position:fixed;
 inset:0;
 display:grid;
 grid-template-columns:repeat(3,1fr);
-grid-auto-rows:150px;
-opacity:0.15;
+grid-auto-rows:33vh;
+opacity:0.35;
 z-index:0;
 }
 
@@ -37,15 +37,15 @@ height:100%;
 object-fit:cover;
 }
 
-/* OVERLAY FIXED */
+/* OVERLAY */
 .overlay{
 position:fixed;
 inset:0;
-background:radial-gradient(circle,#1a1a1a,#000);
+background:rgba(0,0,0,0.6);
 z-index:1;
 }
 
-/* CENTER FIXED */
+/* CENTER CONTENT */
 .center{
 height:100vh;
 display:flex;
@@ -82,12 +82,11 @@ to{transform:translateY(-10vh);}
 
 <body>
 
-<!-- BACKGROUND -->
+<!-- BACKGROUND (ONLY 3 IMAGES) -->
 <div class="bg">
 <img src="mich.jpg">
 <img src="mich.jpg">
 <img src="mich.jpg">
-
 </div>
 
 <div class="overlay"></div>
