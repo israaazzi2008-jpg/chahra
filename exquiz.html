@@ -35,6 +35,11 @@ border:none;
 border-radius:12px;
 background:#2d2d2d;
 color:white;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.03);
 }
 
 .popup{
@@ -49,14 +54,16 @@ opacity:0;
 transition:.3s;
 }
 
-.popup.show{opacity:1}
+.popup.show{
+opacity:1;
+}
 </style>
 </head>
 
 <body>
 
 <div class="box">
-<div id="q">Question here</div>
+<div id="q">bsmlaaah</div>
 <div id="a"></div>
 </div>
 
@@ -78,44 +85,48 @@ a:[
 ["bayna hadi omri","ana la tkhtay"],
 ["la tnak","ayayay"]
 ]
-}
-  {
+},
+{
 q:"tkhatiti wela mzl",
 a:[
 ["wah sayi ydk","a7777"],
 ["la mzel","nkmk"]
 ]
-},
+}
 ];
 
 let i=0;
 
 function load(){
-document.getElementById("q").innerText=questions[i].q;
-let a=document.getElementById("a");
-a.innerHTML="";
+document.getElementById("q").innerText = questions[i].q;
+
+let a = document.getElementById("a");
+a.innerHTML = "";
 
 questions[i].a.forEach(x=>{
-let b=document.createElement("button");
-b.innerText=x[0];
-b.onclick=()=>show(x[1]);
+let b = document.createElement("button");
+b.innerText = x[0];
+b.onclick = () => show(x[1]);
 a.appendChild(b);
 });
 }
 
 function show(msg){
-let p=document.getElementById("popup");
-p.innerText=msg;
+let p = document.getElementById("popup");
+p.innerText = msg;
 p.classList.add("show");
 
 setTimeout(()=>{
 p.classList.remove("show");
+
 i++;
-if(i>=questions.length){
-window.location.href="ex.html";
+
+if(i >= questions.length){
+window.location.href = "ex.html";
 }else{
 load();
 }
+
 },1200);
 }
 
