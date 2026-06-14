@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ex Quiz</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+background:radial-gradient(circle,#1a1a1a,#000);
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial;
+color:white;
+overflow:hidden;
+}
+
+.box{
+width:90%;
+max-width:400px;
+background:rgba(30,30,30,0.9);
+padding:20px;
+border-radius:20px;
+text-align:center;
+}
+
+button{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:none;
+border-radius:12px;
+background:#2d2d2d;
+color:white;
+}
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#111;
+padding:15px 25px;
+border-radius:12px;
+opacity:0;
+transition:.3s;
+}
+
+.popup.show{opacity:1}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<div id="q">Question here</div>
+<div id="a"></div>
+</div>
+
+<div class="popup" id="popup"></div>
+
+<script>
+
+const questions=[
+{
+q:"sa7 khda3tini felb7ar?",
+a:[
+["la sou2 tafahom","mkench mnha chftek nkmk"],
+["wah nkmk","hasbiya lah"]
+]
+},
+{
+q:"mazalek tbghini?",
+a:[
+["bayna hadi omri","ana la tkhtay"],
+["la tnak","ayayay"]
+]
+}
+  {
+q:"tkhatiti wela mzl",
+a:[
+["wah sayi ydk","a7777"],
+["la mzel","nkmk"]
+]
+},
+];
+
+let i=0;
+
+function load(){
+document.getElementById("q").innerText=questions[i].q;
+let a=document.getElementById("a");
+a.innerHTML="";
+
+questions[i].a.forEach(x=>{
+let b=document.createElement("button");
+b.innerText=x[0];
+b.onclick=()=>show(x[1]);
+a.appendChild(b);
+});
+}
+
+function show(msg){
+let p=document.getElementById("popup");
+p.innerText=msg;
+p.classList.add("show");
+
+setTimeout(()=>{
+p.classList.remove("show");
+i++;
+if(i>=questions.length){
+window.location.href="ex.html";
+}else{
+load();
+}
+},1200);
+}
+
+load();
+
+</script>
+
+</body>
+</html>
