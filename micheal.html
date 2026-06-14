@@ -24,19 +24,18 @@ to{opacity:1;transform:scale(1);}
 .bg{
 position:fixed;
 inset:0;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-grid-template-rows:repeat(3,1fr);
-width:100vw;
-height:100vh;
-opacity:0.35;
 z-index:0;
 }
 
-.bg img{
-width:100%;
-height:100%;
-object-fit:cover;
+.bg::before{
+content:"";
+position:absolute;
+inset:0;
+background-image:url("mich.jpg");
+background-repeat:repeat;
+background-size:300px 300px;
+opacity:0.35;
+
 }
 
 /* OVERLAY */
