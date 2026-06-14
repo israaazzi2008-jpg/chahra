@@ -20,14 +20,15 @@ from{opacity:0;transform:scale(1.05);}
 to{opacity:1;transform:scale(1);}
 }
 
-/* background images */
+/* BACKGROUND FIXED */
 .bg{
 position:fixed;
-width:200%;
-height:200%;
+inset:0;
 display:grid;
-grid-template-columns:repeat(6,1fr);
+grid-template-columns:repeat(3,1fr);
+grid-auto-rows:150px;
 opacity:0.15;
+z-index:0;
 }
 
 .bg img{
@@ -36,33 +37,22 @@ height:100%;
 object-fit:cover;
 }
 
-/* dark overlay */
+/* OVERLAY FIXED */
 .overlay{
 position:fixed;
-width:100%;
-height:100%;
+inset:0;
 background:radial-gradient(circle,#1a1a1a,#000);
+z-index:1;
 }
 
-/* floating hearts */
-.heart{
-position:absolute;
-color:#6fa8ff;
-font-size:18px;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-from{transform:translateY(100vh);}
-to{transform:translateY(-10vh);}
-}
-
-/* center box */
+/* CENTER FIXED */
 .center{
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+position:relative;
+z-index:2;
 }
 
 .box{
@@ -73,11 +63,26 @@ text-align:center;
 color:white;
 box-shadow:0 0 25px #6fa8ff;
 }
+
+/* FLOATING HEARTS */
+.heart{
+position:absolute;
+color:#6fa8ff;
+font-size:18px;
+animation:float 6s linear infinite;
+z-index:2;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
 </style>
 </head>
 
 <body>
 
+<!-- BACKGROUND -->
 <div class="bg">
 <img src="mich.jpg">
 <img src="mich.jpg">
